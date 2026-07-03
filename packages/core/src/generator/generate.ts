@@ -1,9 +1,9 @@
 import { hashSeed } from "./hash";
 import { getInitials } from "./initials";
-
+import { choosePalette } from "./palette";
 import { buildSvg } from "./svg/index";
 
-import type { AvatarOptions, SVGString } from "../types";
+import type { AvatarOptions, PaletteGenResponse } from "../types";
 
 export const generateAvatar = ({
  seed,
@@ -13,7 +13,7 @@ export const generateAvatar = ({
  font = "Inter",
  noise = true,
  glass = true
-}: AvatarOptions): SVGString => {
+}: AvatarOptions) => {
  if (!seed.trim()) {
   throw new Error("Please provide a non-empty seed.");
  }
@@ -24,22 +24,41 @@ export const generateAvatar = ({
   ? getInitials(initialsValue)
   : undefined;
 
+ const { palette, angleDirection } = choosePalette(hashedSeed);
+
  const svg: string = buildSvg({
   derivedInitials,
   size,
+  palette,
+  angleDirection,
   rounded,
   font,
   noise,
   glass
  });
 
+ /* return {
+  derivedInitials,
+  size,
+  rounded,
+  font,
+  noise,
+  glass,
+  palette,
+  angleDirection,
+  svg
+ }; */
+
  return svg;
 };
 
 if (import.meta.main) {
  const options: AvatarOptions = {
-  seed: "CBA",
-  initialsValue: "Adebayo Muis Ayodeji"
+  seed: "Charming dc",
+  initialsValue: "Charmingdc",
+  size: 256,
+  rounded: true,
+  font: "Geist"
  };
 
  console.log(generateAvatar(options));

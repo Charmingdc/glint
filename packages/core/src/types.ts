@@ -11,12 +11,37 @@ type AvatarOptions = {
 type SvgBuilderOptions = {
  derivedInitials: string | undefined;
  size: number;
+ palette: string[];
+ angleDirection: number;
  rounded: boolean;
  font: string;
  noise: boolean;
  glass: boolean;
 };
 
+type PaletteGenResponse = {
+ palette: string[];
+ angleDirection: number;
+};
+
 type SVGString = string;
 
-export type { AvatarOptions, SvgBuilderOptions, SVGString };
+type BuildBgFramentOptions = {
+ size: number;
+ rounded: boolean;
+};
+
+type BuildTextFragmentOptions = {
+ size: number;
+ text: string;
+ fontFamily: string;
+};
+
+export type {
+ AvatarOptions,
+ SvgBuilderOptions,
+ SVGString,
+ PaletteGenResponse,
+ BuildBgFramentOptions,
+ BuildTextFragmentOptions
+};

@@ -14,9 +14,3 @@ export const getInitials = (value: string) => {
   words[words.length - 1].charAt(0).toUpperCase()
  );
 };
-
-if (import.meta.main) {
- console.log(getInitials("Charmingdc"));
- console.log(getInitials("Charming Dc"));
- console.log(getInitials("Charming     Muis Dc"));
-}

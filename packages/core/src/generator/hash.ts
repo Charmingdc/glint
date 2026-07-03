@@ -1,4 +1,4 @@
-export const hashSeed = (seed: string) => {
+export const hashSeed = (seed: string): number => {
  if (seed.length === 0) {
   throw new Error("Seed must not be empty.");
  }
@@ -11,7 +11,3 @@ export const hashSeed = (seed: string) => {
 
  return hash;
 };
-
-if (import.meta.main) {
- console.log("seed: CBA", " hashed seed:", hashSeed("CBA"));
-}
