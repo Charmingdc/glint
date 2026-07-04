@@ -43,6 +43,7 @@ export const generateAvatar = ({
  return svg;
 };
 
+/*
 if (import.meta.main) {
  const options: AvatarOptions = {
   seed: "Charming dc",
@@ -53,4 +54,4 @@ if (import.meta.main) {
  };
 
  console.log(generateAvatar(options));
-}
+}*/

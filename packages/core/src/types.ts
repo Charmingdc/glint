@@ -26,16 +26,22 @@ type PaletteGenResponse = {
 
 type SVGString = string;
 
-type BuildBgFramentOptions = {
- size: number;
- rounded: boolean;
- gradientId: string;
-};
-
 type BuildTextFragmentOptions = {
  size: number;
  text: string;
  fontFamily: string;
+};
+
+type DefFragmentIds = {
+ gradientId: string;
+ filterId: string | undefined;
+ clipPathId: string | uundefined;
+};
+
+type BuildBgFramentOptions = {
+ size: number;
+ rounded: boolean;
+ ids: DefFragmentIds;
 };
 
 export type {
@@ -44,5 +50,6 @@ export type {
  SVGString,
  PaletteGenResponse,
  BuildBgFramentOptions,
- BuildTextFragmentOptions
+ BuildTextFragmentOptions,
+ DefFragmentIds
 };

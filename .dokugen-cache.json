@@ -1,10 +1,11 @@
 {
   "version": "1.0",
   "files": {
-    ".dokugen-backup.md": "cc369177ea08354b0f531d05527b07a8bf6fbf5df749c94465b51ba6a061355e",
+    ".dokugen-backup.md": "789f9bf84a677731540d77605faa086e1a852633e4fad99dd47797c1449dd82e",
+    ".dokugen-cache.json": "662db1569acc9f7ac144fe2a2399e14d6ba8ef5a37617192209ad5f0ca1452d5",
     ".gitattributes": "f70d755466b101646b043fe3c62c4f8a39eae827c1a2a303a2d39ccd93f534f8",
     ".gitignore": "dba27c31aad935787bb275c3e5e4e957708f15386de599eff1db476022cd7e4c",
-    "README.md": "789f9bf84a677731540d77605faa086e1a852633e4fad99dd47797c1449dd82e",
+    "README.md": "d472042c46825e12a76d516073962174a6f379482c49e525dc0510a74369616d",
     "api/avatar.ts": "6e775bdf0257656b4d031d7f4542c1d7d1859ef0022ff7e9153f3627ba8a505b",
     "apps/playground/.gitignore": "fe718e7babb14f3cbad2d97f08889b9ce5215ed3fe0e43b2b8cfbfb3b9b844e8",
     "apps/playground/README.md": "185925eeb85bf7a9f17ecd111ec3d1bba3a37df4acfa40a3e8b6cdefc76b918f",

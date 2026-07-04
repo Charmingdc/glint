@@ -2,16 +2,16 @@
 
 ## Overview
 
-This project is a monorepo that helps you quickly create custom SVG avatars via a simple API. It also provides a ready-to-go React development environment, perfect for prototyping new features or building user interfaces. It's designed to streamline the creation of personalized profile pictures and offers a robust setup for modern frontend development.
+Ever need a unique avatar for a user without much fuss? This project helps you instantly generate custom profile pictures through a super simple interface. It also gives you a lightning-fast React development environment, so you can prototype new frontend ideas in a breeze.
 
 ## Installation
 
-Getting this project running on your local machine is pretty straightforward.
+Getting this project up and running on your local machine is pretty straightforward.
 
 1.  **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/Charmingdc/glint
+    git clone git@github.com:Charmingdc/glint
     cd glint
     ```
 
@@ -24,7 +24,7 @@ Getting this project running on your local machine is pretty straightforward.
 
 ## Usage
 
-This monorepo has two main parts: a frontend playground and a backend API for avatar generation.
+This monorepo has two main parts: a frontend playground and an API for avatar generation.
 
 ### Running the Frontend Playground
 
@@ -57,12 +57,12 @@ This will return an SVG image, something like this:
 
 ### On-Demand SVG Avatar Generation
 
-This project offers a dedicated API endpoint that can dynamically create unique SVG avatars. You just pass in a name, and the API returns a scalable vector graphic, which is really useful for user profiles or as a placeholder.
+This project offers a dedicated endpoint that can dynamically create unique SVG avatars. You just pass in a name, and the system returns a scalable vector graphic, which is really useful for user profiles or as a placeholder.
 
 ```mermaid
 sequenceDiagram
   actor Client
-  participant API as "Avatar API Endpoint"
+  participant API as "Avatar Generation Endpoint"
   participant Core as "@glint/core"
 
   Client->>API: GET /avatar?name=Jane Doe

@@ -1,17 +1,17 @@
 type GenerateGradientOptions = {
- defId: string;
+ gradientId: string;
  palette: string[];
  primaryHash: number;
  secondaryHash: number;
 };
 
 export const generateGradient = ({
- defId,
+ gradientId,
  palette,
  primaryHash,
  secondaryHash
 }: GenerateGradientOptions): string => {
- if (!defId) {
+ if (!gradientId) {
   throw new Error("Provide a unique identifier");
  }
 
@@ -20,7 +20,7 @@ export const generateGradient = ({
  const radius = 15 + (primaryHash % (85 - 15 + 1));
 
  return `
-   <radialGradient id="${defId}" cx="${xAxis}%" cy="${yAxis}%" r="${radius}%">
+   <radialGradient id="${gradientId}" cx="${xAxis}%" cy="${yAxis}%" r="${radius}%">
       <stop offset="0%" stop-color="${palette[0]}"/>
       <stop offset="100%" stop-color="${palette[1]}" />
    </radialGradient>
