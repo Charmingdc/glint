@@ -1,28 +1,28 @@
 type GenerateGradientOptions = {
  defId: string;
- size: number;
  palette: string[];
- angleDirection: number;
+ primaryHash: number;
+ secondaryHash: number;
 };
 
 export const generateGradient = ({
  defId,
- size,
  palette,
- angleDirection
+ primaryHash,
+ secondaryHash
 }: GenerateGradientOptions): string => {
  if (!defId) {
   throw new Error("Provide a unique identifier");
-  return "";
  }
 
- const halfSize = size / 2;
+ const xAxis = 5 + (primaryHash % (95 - 5 + 1));
+ const yAxis = 5 + (secondaryHash % (95 - 5 + 1));
+ const radius = 15 + (primaryHash % (85 - 15 + 1));
 
  return `
-   <linearGradient id="${defId}" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(${angleDirection}, 0, 0)">
-     <stop offset="5%" stop-color="${palette[0]}"/>
-     <stop offset="65%" stop-color="${palette[1]}" />
-     <stop offset="100%" stop-color="${palette[2]}"/>
-   </linearGradient>
+   <radialGradient id="${defId}" cx="${xAxis}%" cy="${yAxis}%" r="${radius}%">
+      <stop offset="0%" stop-color="${palette[0]}"/>
+      <stop offset="100%" stop-color="${palette[1]}" />
+   </radialGradient>
   `.trim();
 };

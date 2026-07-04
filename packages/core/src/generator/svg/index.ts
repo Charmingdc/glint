@@ -5,21 +5,22 @@ import { buildDefs } from "./defs/index";
 import type { SvgBuilderOptions, SVGString } from "../../types";
 
 export const buildSvg = ({
- hashedSeed,
+ primaryHash,
+ secondaryHash,
  derivedInitials,
  size,
  palette,
- angleDirection,
  rounded,
  font,
  noise,
  glass
 }: SvgBuilderOptions): SVGString => {
  const { gradientId, defSvgString } = buildDefs({
-  baseDefId: `def-${hashedSeed}`,
+  baseDefId: `${primaryHash}-${secondaryHash}`,
+  primaryHash,
+  secondaryHash,
   size,
   palette,
-  angleDirection,
   noise,
   glass
  });

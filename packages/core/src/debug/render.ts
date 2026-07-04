@@ -4,18 +4,18 @@ import type { AvatarOptions } from "../types";
 
 const writeSvgFile = async () => {
  const avatarOptions: AvatarOptions = {
-  seed: "Muis_",
-  initialsValue: "Muis",
+  seed: "Charming",
+  initialsValue: "Adebayo Muis",
   size: 256,
-  rounded: true,
-  font: "cursive"
+  rounded: true
+  //  font: "cursive"
  };
 
  const svgContent = generateAvatar(avatarOptions);
 
  try {
   await writeFile("avatar.svg", svgContent, "utf8");
-  console.log("SVG graphic saved successfully! Svg content:", svgContent);
+  console.log("SVG graphic saved successfully!");
  } catch (err) {
   console.error("Failed to save SVG:", err);
  }

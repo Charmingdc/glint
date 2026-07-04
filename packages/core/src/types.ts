@@ -9,11 +9,11 @@ type AvatarOptions = {
 };
 
 type SvgBuilderOptions = {
- hashedSeed: number;
+ primaryHash: number;
+ secondaryHash: number;
  derivedInitials: string | undefined;
  size: number;
  palette: string[];
- angleDirection: number;
  rounded: boolean;
  font: string;
  noise: boolean;
@@ -22,7 +22,6 @@ type SvgBuilderOptions = {
 
 type PaletteGenResponse = {
  palette: string[];
- angleDirection: number;
 };
 
 type SVGString = string;

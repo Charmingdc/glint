@@ -19,20 +19,21 @@ export const generateAvatar = ({
   return;
  }
 
- const hashedSeed = hashSeed(seed);
+ const primaryHash = hashSeed(seed);
+ const secondaryHash = hashSeed(seed + "-secondary");
 
  const derivedInitials = initialsValue?.trim()
   ? getInitials(initialsValue)
   : undefined;
 
- const { palette, angleDirection } = choosePalette(hashedSeed);
+ const palette = choosePalette(primaryHash);
 
  const svg: string = buildSvg({
-  hashedSeed,
+  primaryHash,
+  secondaryHash,
   derivedInitials,
   size,
   palette,
-  angleDirection,
   rounded,
   font,
   noise,

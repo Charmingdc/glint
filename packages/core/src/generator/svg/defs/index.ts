@@ -2,9 +2,10 @@ import { generateGradient } from "./gradient";
 
 type BuildDefsOptions = {
  baseDefId: string;
+ primaryHash: number;
+ secondaryHash: number;
  size: number;
  palette: string[];
- angleDirection: number;
  noise: boolean;
  glass: boolean;
 };
@@ -16,25 +17,26 @@ type DefsFragmentResponse = {
 
 export const buildDefs = ({
  baseDefId,
+ primaryHash,
+ secondaryHash,
  size,
  palette,
- angleDirection,
  noise,
  glass
 }: BuildDefsOptions): DefsFragmentResponse => {
  const gradientId = `${baseDefId}-gradient`;
 
  const defSvgString = `
- <defs>
-    ${generateGradient({
-     defId: gradientId,
-     size,
-     palette,
-     angleDirection
-    })}
+  <defs>
+     ${generateGradient({
+      defId: gradientId,
+      palette,
+      primaryHash,
+      secondaryHash
+     })}
     
-   ${noise ? "" : ""}
-   ${glass ? "" : ""}
+    ${noise ? "" : ""}
+    ${glass ? "" : ""}
   </defs>
  `.trim();
 

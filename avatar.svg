@@ -1,16 +1,15 @@
 <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
     <defs>
-    <linearGradient id="def-252457663-gradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(101, 0, 0)">
-     <stop offset="10%" stop-color="#FC5C7D"/>
-     <stop offset="65%" stop-color="#B36FC0" />
-     <stop offset="100%" stop-color="#6A82FB"/>
-   </linearGradient>
+     <radialGradient id="3378000423-2769523385-gradient" cx="75%" cy="88%" r="68%">
+      <stop offset="0%" stop-color="#11998E"/>
+      <stop offset="100%" stop-color="#38EF7D" />
+   </radialGradient>
     
-   
-   
+    
+    
   </defs>
     
-    <rect width="100%" height="100%" rx="128" ry="128" fill="url(#def-252457663-gradient)"/>
+    <rect width="100%" height="100%" rx="128" ry="128" fill="url(#3378000423-2769523385-gradient)"/>
     
-    <text x="128" y="128" font-weight="bold" font-family="cursive" font-size="80" fill="white" text-anchor="middle" dominant-baseline="middle"> MU </text>
+    <text x="128" y="128" font-weight="bold" font-family="Inter" font-size="80" fill="white" text-anchor="middle" dominant-baseline="middle">AM</text>
    </svg>

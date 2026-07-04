@@ -12,8 +12,5 @@ export const choosePalette = (hashedSeed: number): PaletteGenResponse => {
 
  const palette = GRADIENT_PALETTES[paletteIndex];
 
- return {
-  palette,
-  angleDirection
- };
+ return palette;
 };
