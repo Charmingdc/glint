@@ -16,6 +16,7 @@ export const generateAvatar = ({
 }: AvatarOptions) => {
  if (!seed.trim()) {
   throw new Error("Please provide a non-empty seed.");
+  return;
  }
 
  const hashedSeed = hashSeed(seed);
@@ -27,6 +28,7 @@ export const generateAvatar = ({
  const { palette, angleDirection } = choosePalette(hashedSeed);
 
  const svg: string = buildSvg({
+  hashedSeed,
   derivedInitials,
   size,
   palette,
@@ -36,18 +38,6 @@ export const generateAvatar = ({
   noise,
   glass
  });
-
- /* return {
-  derivedInitials,
-  size,
-  rounded,
-  font,
-  noise,
-  glass,
-  palette,
-  angleDirection,
-  svg
- }; */
 
  return svg;
 };

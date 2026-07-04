@@ -9,6 +9,7 @@ type AvatarOptions = {
 };
 
 type SvgBuilderOptions = {
+ hashedSeed: number;
  derivedInitials: string | undefined;
  size: number;
  palette: string[];
@@ -29,6 +30,7 @@ type SVGString = string;
 type BuildBgFramentOptions = {
  size: number;
  rounded: boolean;
+ gradientId: string;
 };
 
 type BuildTextFragmentOptions = {
