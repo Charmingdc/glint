@@ -1,0 +1,1 @@
+{"version":3,"file":"text.js","sourceRoot":"","sources":["../../../src/generator/svg/text.ts"],"names":[],"mappings":"AAIA,MAAM,CAAC,MAAM,YAAY,GAAG,CAAC,EAC5B,IAAI,EACJ,IAAI,EACJ,UAAU,EACgB,EAAiB,EAAE;IAC7C,MAAM,MAAM,GAAG,IAAI,GAAG,CAAC,CAAC;IAExB,OAAO;YACI,MAAM,QAAQ,MAAM,qCAAqC,UAAU,iFAAiF,IAAI;EAClK,CAAC,IAAI,EAAE,CAAC;AACV,CAAC,CAAC"}
