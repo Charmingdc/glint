@@ -10,7 +10,7 @@ type BuildDefsOptions = {
  secondaryHash: number;
  size: number;
  rounded: boolean;
- palette: string[];
+ palette: readonly [string, string, string];
  noise: boolean;
  blur: boolean;
 };

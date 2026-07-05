@@ -13,7 +13,7 @@ type SvgBuilderOptions = {
  secondaryHash: number;
  derivedInitials: string | undefined;
  size: number;
- palette: readonly [string, string];
+ palette: readonly [string, string, string];
  rounded: boolean;
  font: string;
  noise: boolean;

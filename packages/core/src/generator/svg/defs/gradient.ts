@@ -1,6 +1,6 @@
 type GenerateGradientOptions = {
  gradientIds: readonly [string, string, string];
- palette: string[];
+ palette: readonly [string, string, string];
  primaryHash: number;
  secondaryHash: number;
 };
@@ -30,7 +30,6 @@ export const generateGradient = ({
 
  let q3Index = (primaryHash + secondaryHash) % 4;
 
- // Never allow both accent gradients in the same quadrant.
  if (q3Index === q2Index) {
   q3Index = (q3Index + 1) % 4;
  }
@@ -44,9 +43,8 @@ export const generateGradient = ({
  const cx3 = q3.x[0] + (secondaryHash % (q3.x[1] - q3.x[0] + 1));
  const cy3 = q3.y[0] + (primaryHash % (q3.y[1] - q3.y[0] + 1));
 
- // Slightly larger accent blobs
- const r2 = 30 + (secondaryHash % 21); // 30–50%
- const r3 = 25 + ((primaryHash + secondaryHash) % 21); // 25–45%
+ const r2 = 25 + (secondaryHash % 21);
+ const r3 = 20 + ((primaryHash + secondaryHash) % 21);
 
  return `
     <radialGradient id="${gradient1Id}" cx="${cx1}%" cy="${cy1}%" r="${r1}%">
