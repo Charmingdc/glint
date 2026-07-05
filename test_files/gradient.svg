@@ -5,12 +5,12 @@
       <stop offset="100%" stop-color="#FDBB11" />
     </radialGradient>
 
-    <radialGradient id="243438479-2769523385-gradient-2" cx="8%" cy="82%" r="35%">
+    <radialGradient id="243438479-2769523385-gradient-2" cx="88%" cy="82%" r="35%">
       <stop offset="0%" stop-color="#FDBB11" />
       <stop offset="100%" stop-color="#FFD200" />
     </radialGradient>
 
-    <radialGradient id="243438479-2769523385-gradient-3" cx="83%" cy="10%" r="56%">
+    <radialGradient id="243438479-2769523385-gradient-3" cx="23%" cy="10%" r="56%">
       <stop offset="0%" stop-color="#FFD200" />
       <stop offset="100%" stop-color="#F7971E" />
     </radialGradient>

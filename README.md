@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project helps you quickly create unique SVG profile pictures using a straightforward API. It's also a snappy React development environment, perfect for prototyping new frontend ideas without any hassle. The goal is to make it super easy to get a custom avatar or kickstart a new UI component.
+This project is a monorepo that lets you easily create custom SVG profile pictures through a simple API. It also gives you a fast and modern React development environment, perfect for quickly trying out new UI ideas. Essentially, it helps you get a unique avatar or kickstart frontend development without any fuss.
 
 ## Installation
 
