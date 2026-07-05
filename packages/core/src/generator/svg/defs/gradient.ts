@@ -13,38 +13,45 @@ export const generateGradient = ({
 }: GenerateGradientOptions): string => {
  const [gradient1Id, gradient2Id, gradient3Id] = gradientIds;
 
- // Base gradient
  const cx1 = 30 + (primaryHash % 41);
  const cy1 = 30 + (secondaryHash % 41);
  const r1 = 90 + (primaryHash % 31);
 
- // Four deterministic quadrants
- const quadrants = [
-  { x: [5, 45], y: [5, 45] }, // Top Left
-  { x: [55, 95], y: [5, 45] }, // Top Right
-  { x: [5, 45], y: [55, 95] }, // Bottom Left
-  { x: [55, 95], y: [55, 95] } // Bottom Right
+ // Edge placement zones
+ const edgeZones = [
+  { x: [5, 25], y: [20, 80] },
+  { x: [75, 95], y: [20, 80] },
+  { x: [20, 80], y: [5, 25] },
+  { x: [20, 80], y: [75, 95] }
  ] as const;
 
- const q2Index = primaryHash % 4;
+ // Inner placement zones
+ const innerZones = [
+  { x: [25, 55], y: [25, 55] },
+  { x: [45, 75], y: [25, 55] },
+  { x: [25, 55], y: [45, 75] },
+  { x: [45, 75], y: [45, 75] }
+ ] as const;
 
- let q3Index = (primaryHash + secondaryHash) % 4;
+ const edgeIndex = primaryHash % edgeZones.length;
 
- if (q3Index === q2Index) {
-  q3Index = (q3Index + 1) % 4;
+ let innerIndex = (primaryHash + secondaryHash) % innerZones.length;
+
+ if (innerIndex === edgeIndex) {
+  innerIndex = (innerIndex + 1) % innerZones.length;
  }
 
- const q2 = quadrants[q2Index];
- const q3 = quadrants[q3Index];
+ const edge = edgeZones[edgeIndex];
+ const inner = innerZones[innerIndex];
 
- const cx2 = q2.x[0] + (primaryHash % (q2.x[1] - q2.x[0] + 1));
- const cy2 = q2.y[0] + (secondaryHash % (q2.y[1] - q2.y[0] + 1));
+ const cx2 = edge.x[0] + (primaryHash % (edge.x[1] - edge.x[0] + 1));
+ const cy2 = edge.y[0] + (secondaryHash % (edge.y[1] - edge.y[0] + 1));
 
- const cx3 = q3.x[0] + (secondaryHash % (q3.x[1] - q3.x[0] + 1));
- const cy3 = q3.y[0] + (primaryHash % (q3.y[1] - q3.y[0] + 1));
+ const cx3 = inner.x[0] + (secondaryHash % (inner.x[1] - inner.x[0] + 1));
+ const cy3 = inner.y[0] + (primaryHash % (inner.y[1] - inner.y[0] + 1));
 
  const r2 = 25 + (secondaryHash % 21);
- const r3 = 20 + ((primaryHash + secondaryHash) % 21);
+ const r3 = 20 + ((primaryHash + secondaryHash) % 31);
 
  return `
     <radialGradient id="${gradient1Id}" cx="${cx1}%" cy="${cy1}%" r="${r1}%">

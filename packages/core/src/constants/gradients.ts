@@ -1,32 +1,61 @@
 export const GRADIENT_PALETTES = [
- ["#00C6FF", "#00A0FF", "#0072FF"], // Aurora
- ["#FF7E5F", "#FE996D", "#FEB47B"], // Sunset
- ["#667EEA", "#6E65C6", "#764BA2"], // Royal
- ["#11998E", "#25C48A", "#38EF7D"], // Emerald
- ["#FC5C7D", "#B36FC0", "#6A82FB"], // Flamingo
- ["#F953C6", "#D7389D", "#B91D73"], // Candy
- ["#2193B0", "#46B4CF", "#6DD5ED"], // Ocean
- ["#C471F5", "#DF71E1", "#FA71CD"], // Lavender
- ["#F7971E", "#FDBB11", "#FFD200"], // Amber
- ["#134E5E", "#427F6F", "#71B280"], // Forest
- ["#EB3349", "#EF4846", "#F45C43"], // Cherry
- ["#3A1C71", "#88506F", "#D76D77"], // Twilight
- ["#4E54C8", "#6E74E2", "#8F94FB"], // Cosmos
- ["#43E97B", "#3EF1A9", "#38F9D7"], // Mint
- ["#F12711", "#F36B15", "#F5AF19"], // Fire
- ["#12C2E9", "#6B9BEF", "#C471ED"], // Neon
- ["#0F2027", "#203A43", "#2C5364"], // Midnight
- ["#355C7D", "#6C5B7B", "#C06C84"], // Dusk
- ["#A770EF", "#CF8BF3", "#FDB99B"], // Dream
- ["#56CCF2", "#4FA8F0", "#2F80ED"], // Arctic
- ["#06B6D4", "#67E8F9", "#A5F3FC"], // Tropical Sky
- ["#10B981", "#4ADE80", "#84CC16"], // Meadow
- ["#8B5CF6", "#A855F7", "#EC4899"], // Galaxy
- ["#F43F5E", "#FB7185", "#FDA4AF"], // Rose
- ["#3B82F6", "#93C5FD", "#DBEAFE"], // Glacier
- ["#F59E0B", "#F97316", "#DC2626"], // Ember
- ["#14B8A6", "#2DD4BF", "#5EEAD4"], // Lagoon
- ["#22C55E", "#86EFAC", "#DCFCE7"], // Spring
- ["#0EA5E9", "#7C3AED", "#EC4899"], // Synthwave
- ["#111827", "#4B5563", "#9CA3AF"] // Monochrome
+ // 1. Solar Drift (warm cinematic energy)
+ ["#FF6A3D", "#FFB86B", "#FFE29A"],
+
+ // 2. Neon Bloom (controlled cyber pink/purple)
+ ["#7C3AED", "#C026D3", "#FF5DA2"],
+
+ // 3. Arctic Light (clean cyan glass)
+ ["#38BDF8", "#7DD3FC", "#E0F2FE"],
+
+ // 4. Deep Ocean (muted blue-green depth)
+ ["#0F172A", "#1E3A5F", "#2DD4BF"],
+
+ // 5. Ember Fade (fire but softened, not harsh)
+ ["#DC2626", "#FB7185", "#FCD34D"],
+
+ // 6. Violet Mist (soft editorial purple)
+ ["#4C1D95", "#8B5CF6", "#DDD6FE"],
+
+ // 7. Glass Mint (clean UI green-cyan blend)
+ ["#14B8A6", "#5EEAD4", "#CCFBF1"],
+
+ // 8. Rose Light (soft luxury pink)
+ ["#F43F5E", "#FB7185", "#FCE7F3"],
+
+ // 9. Indigo Night (tech calm dark blue)
+ ["#1E1B4B", "#3730A3", "#60A5FA"],
+
+ // 10. Sand Glow (neutral warm editorial)
+ ["#F59E0B", "#FBBF24", "#FEF3C7"],
+
+ // 11. Aurora Field (balanced green-blue transition)
+ ["#10B981", "#22D3EE", "#A7F3D0"],
+
+ // 12. Midnight Ink (near-black with subtle blue lift)
+ ["#0B0F1A", "#111827", "#334155"],
+
+ // 13. Cyber Coral (modern warm-pink fusion)
+ ["#FF4D6D", "#FF8FAB", "#FFD6A5"],
+
+ // 14. Electric Sky (bright but controlled blue system)
+ ["#2563EB", "#60A5FA", "#DBEAFE"],
+
+ // 15. Orchid Fade (premium purple-pink gradient)
+ ["#9333EA", "#E879F9", "#FBCFE8"],
+
+ // 16. Sage Paper (soft natural green neutral)
+ ["#2F6F4E", "#86EFAC", "#DCFCE7"],
+
+ // 17. Lava Glass (warm red-orange cinematic)
+ ["#B91C1C", "#F97316", "#FDBA74"],
+
+ // 18. Frost Neon (icy cyan with restraint)
+ ["#06B6D4", "#67E8F9", "#E0F7FF"],
+
+ // 19. Graphite Bloom (monochrome premium UI)
+ ["#111827", "#4B5563", "#E5E7EB"],
+
+ // 20. Hyper Violet (controlled synth accent)
+ ["#5B21B6", "#A855F7", "#F0ABFC"]
 ] as const;
