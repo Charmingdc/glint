@@ -1,27 +1,27 @@
 type GenerateFilterOptions = {
-  filterId: string;
-  primaryHash: number;
-  secondaryHash: number;
-  noise: boolean;
-  blur: boolean;
+ filterId: string;
+ primaryHash: number;
+ secondaryHash: number;
+ noise: boolean;
+ blur: boolean;
 };
 
 export const generateFilter = ({
-  filterId,
-  primaryHash,
-  secondaryHash,
-  noise,
-  blur,
+ filterId,
+ primaryHash,
+ secondaryHash,
+ noise,
+ blur
 }: GenerateFilterOptions): string => {
-  if (!filterId) {
-    throw new Error("Provide a unique identifier");
-  }
+ if (!filterId) {
+  throw new Error("Provide a unique identifier");
+ }
 
-  const baseFrequencyVal = 0.02 + (secondaryHash % 14) * 0.01;
-  const numOctavesVal = 1 + (secondaryHash % 4);
-  const stdDeviationVal = 1 + (secondaryHash % 3);
+ const baseFrequencyVal = 0.02 + (secondaryHash % 14) * 0.01;
+ const numOctavesVal = 1 + (secondaryHash % 4);
+ const stdDeviationVal = 1 + (secondaryHash % 3);
 
-  return `
+ return `
     <filter
       id="${filterId}"
       x="-10%"
@@ -30,25 +30,25 @@ export const generateFilter = ({
       height="120%"
     >
       ${
-        blur
-          ? `
+       blur
+        ? `
         <feGaussianBlur
           in="SourceGraphic"
           stdDeviation="${stdDeviationVal}"
           result="blurredGradient"
         />
       `
-          : ""
+        : ""
       }
 
       ${
-        noise
-          ? `
+       noise
+        ? `
         <feTurbulence
           seed="${primaryHash}"
           baseFrequency="${baseFrequencyVal}"
           numOctaves="${numOctavesVal}"
-          type="fractalNoise"
+          type="turbulence"
           result="noise"
         />
 
@@ -63,12 +63,12 @@ export const generateFilter = ({
           result="noiseTexture"
         />
       `
-          : ""
+        : ""
       }
 
       ${
-        noise
-          ? `
+       noise
+        ? `
         <feBlend
           in="${blur ? "blurredGradient" : "SourceGraphic"}"
           in2="noiseTexture"
@@ -76,8 +76,8 @@ export const generateFilter = ({
           result="final"
         />
       `
-          : blur
-            ? `
+        : blur
+          ? `
         <feComposite
           in="blurredGradient"
           in2="SourceGraphic"
@@ -85,7 +85,7 @@ export const generateFilter = ({
           result="final"
         />
       `
-            : ""
+          : ""
       }
     </filter>
   `.trim();

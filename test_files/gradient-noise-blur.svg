@@ -1,12 +1,22 @@
 <svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
     <defs>
-     <radialGradient id="237488652-2769523385-gradient" cx="42%" cy="88%" r="57%">
-      <stop offset="0%" stop-color="#00C6FF"/>
-      <stop offset="100%" stop-color="#0072FF" />
-   </radialGradient>
+     <radialGradient id="243438479-2769523385-gradient-1" cx="16%" cy="88%" r="71%">
+      <stop offset="0%" stop-color="#F7971E" />
+      <stop offset="100%" stop-color="#FDBB11" />
+    </radialGradient>
+
+    <radialGradient id="243438479-2769523385-gradient-2" cx="8%" cy="82%" r="35%">
+      <stop offset="0%" stop-color="#FDBB11" />
+      <stop offset="100%" stop-color="#FFD200" />
+    </radialGradient>
+
+    <radialGradient id="243438479-2769523385-gradient-3" cx="83%" cy="10%" r="56%">
+      <stop offset="0%" stop-color="#FFD200" />
+      <stop offset="100%" stop-color="#F7971E" />
+    </radialGradient>
     
     <filter
-      id="237488652-2769523385-filter"
+      id="243438479-2769523385-filter"
       x="-10%"
       y="-10%"
       width="120%"
@@ -22,10 +32,10 @@
 
       
         <feTurbulence
-          seed="237488652"
+          seed="243438479"
           baseFrequency="0.15"
           numOctaves="2"
-          type="fractalNoise"
+          type="turbulence"
           result="noise"
         />
 
@@ -51,7 +61,7 @@
       
     </filter>
     
-    <clipPath id="237488652-2769523385-clip-path">
+    <clipPath id="243438479-2769523385-clip-path">
     <rect
       width="100%"
       height="100%"
@@ -61,9 +71,11 @@
   </clipPath>
   </defs>
     
-    <g clip-path="url(#237488652-2769523385-clip-path)">
-      <rect width="100%" height="100%" rx="128" ry="128" fill="url(#237488652-2769523385-gradient)" filter="url(#237488652-2769523385-filter)" />
-    </g>
+    <g clip-path="url(#243438479-2769523385-clip-path)" filter="url(#243438479-2769523385-filter)">
+        <rect width="100%" height="100%" rx="128" ry="128" fill="url(#243438479-2769523385-gradient-1)" />
+    <rect width="100%" height="100%" rx="128" ry="128" fill="url(#243438479-2769523385-gradient-2)" />
+    <rect width="100%" height="100%" rx="128" ry="128" fill="url(#243438479-2769523385-gradient-3)" />
+      </g>
     
     <text x="128" y="128" font-weight="bold" font-family="Inter" font-size="80" fill="white" text-anchor="middle" dominant-baseline="middle">AM</text>
    </svg>

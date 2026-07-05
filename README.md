@@ -2,11 +2,11 @@
 
 ## Overview
 
-You know how sometimes you just need a quick, unique avatar for a user without all the fuss? This project is built for exactly that! It helps you instantly generate custom SVG profile pictures through a super simple API. Plus, it gives you a lightning-fast React development environment for when you want to prototype new frontend ideas in a breeze. It's all about getting things done efficiently.
+This project helps you quickly create unique SVG profile pictures using a straightforward API. It's also a snappy React development environment, perfect for prototyping new frontend ideas without any hassle. The goal is to make it super easy to get a custom avatar or kickstart a new UI component.
 
 ## Installation
 
-Getting this project up and running on your local machine is pretty straightforward.
+Getting this project running on your local machine is pretty simple.
 
 1.  **Clone the Repository:**
 
@@ -28,30 +28,30 @@ This monorepo has two main parts: a frontend playground application and an API f
 
 ### Running the Frontend Playground
 
-To fire up the React development server for the `playground` application:
+To start the React development server for the `playground` application:
 
 ```bash
 pnpm dev:playground
 ```
 
-This command will usually open the application in your browser at `http://localhost:5173` (or whatever port is available). The `playground` app is a standard Vite + React setup, great for experimenting with React features and for quick prototyping new UI components.
+This command will typically open the application in your browser at `http://localhost:5173` (or another available port). The `playground` app is a standard Vite + React setup, ideal for experimenting with React features and for quick prototyping of new UI components.
 
 ### Using the Avatar Generation API
 
 The avatar generation API is designed to be lightweight and serverless-friendly. While there isn't a dedicated local server for it in this setup (it's often deployed as a serverless function), you can easily call it directly once it's deployed, or integrate it into a local serverless environment like Vercel Functions.
 
-Just send a `GET` request to the `/avatar` endpoint, including a `name` query parameter, to generate a custom SVG avatar.
+Just send a `GET` request to the `/avatar` endpoint, including various query parameters to customize your SVG avatar.
 
 **Example Request:**
-`GET /avatar?name=Alice`
+`GET /avatar?name=Alice&rounded=true&size=100`
 
 This will return an SVG image, something like this:
 
 ```xml
-<svg viewBox="0 0 128 128" width="128" height="128" xmlns="http://www.w3.org/2000/svg">
-  <!-- SVG content for "Alice" -->
-  <rect x="0" y="0" width="128" height="128" fill="#F0F8FF"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="48" fill="#4B0082">Al</text>
+<svg viewBox="0 0 100 100" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- SVG content for "Alice", rounded, size 100 -->
+  <rect x="0" y="0" width="100" height="100" rx="50" ry="50" fill="#F0F8FF"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="36" fill="#4B0082">Al</text>
 </svg>
 ```
 
@@ -59,7 +59,7 @@ This will return an SVG image, something like this:
 
 ### On-Demand SVG Avatar Generation
 
-This project offers a dedicated endpoint that can dynamically create unique SVG avatars. You just pass in a name, and the system returns a scalable vector graphic. This is super useful for user profiles, as a placeholder, or for any scenario where you need quick visual identity.
+This project offers a dedicated endpoint that can dynamically create unique SVG avatars. You just pass in a name and other customization options, and the system returns a scalable vector graphic. This is super useful for user profiles, as a placeholder, or for any scenario where you need quick visual identity.
 
 ```mermaid
 sequenceDiagram
@@ -67,15 +67,15 @@ sequenceDiagram
   participant API as "Avatar Generation Endpoint"
   participant Core as "@glint/core"
 
-  Client->>API: GET /avatar?name=Jane Doe
-  API->>Core: Call generateAvatar({ name: "Jane Doe" })
+  Client->>API: GET /avatar?name=Jane Doe&rounded=true
+  API->>Core: Call generateAvatar({ name: "Jane Doe", rounded: true })
   Core-->>API: Return SVG String
   API-->>Client: Respond with image/svg+xml (SVG content)
 ```
 
 ### Modern React Development Environment
 
-The `playground` application gives you a high-performance React development setup, pre-configured with Vite. It's all set up for rapid prototyping, building components, and exploring new React features, with benefits like hot module replacement (HMR) and optimized tooling right out of the box.
+The `playground` application provides a high-performance React development setup, pre-configured with Vite. It's all set up for rapid prototyping, building components, and exploring new React features, with benefits like hot module replacement (HMR) and optimized tooling right out of the box.
 
 ### Monorepo Organization
 
@@ -107,11 +107,17 @@ This project currently includes one API endpoint focused on avatar generation.
 
 #### `GET /avatar`
 **Description**:
-This endpoint dynamically generates an SVG avatar. You can personalize the avatar by including a `name` via a query parameter. If you don't provide a `name`, it will use "John Doe" as the default.
+This endpoint dynamically generates an SVG avatar. You can personalize the avatar by including various parameters via query. If you don't provide a `name`, it will use a default value (usually derived from a seed or "John Doe").
 
 **Request**:
 Query Parameters:
-*   `name` (optional): The name you want to use for generating the avatar. For example, `?name=Jane%20Doe`.
+*   `seed` (optional, string): A string to use as a seed for generating the avatar.
+*   `name` (optional, string): The name you want to use for generating the avatar's initials. E.g., `?name=Jane%20Doe`.
+*   `size` (optional, number): The desired width and height of the SVG avatar. E.g., `?size=128`.
+*   `rounded` (optional, boolean): Set to `true` to make the avatar rounded (circular). E.g., `?rounded=true`.
+*   `font` (optional, string): Specify a font family to use for the initials.
+*   `noise` (optional, boolean): Set to `true` to add noise to the avatar background.
+*   `blur` (optional, boolean): Set to `true` to apply a blur effect.
 
 **Response**:
 A successful request will return an `image/svg+xml` content type directly, which contains the generated SVG data.
@@ -125,10 +131,10 @@ A successful request will return an `image/svg+xml` content type directly, which
 ```
 
 **Errors**:
-The current implementation handles missing names by gracefully defaulting to "John Doe". There are no explicit error responses defined for invalid input, as the `generateAvatar` function is designed to always produce valid SVG.
+The current implementation is quite robust; it handles missing names by gracefully defaulting and is designed to always produce valid SVG. Therefore, explicit error responses for invalid input are not typically returned by this function, as it attempts to generate an avatar under all circumstances.
 
 **Environment Variables**:
-No specific environment variables are needed for the avatar API in its current configuration.
+No specific environment variables are needed for the avatar API in its current configuration, as all customization is handled via query parameters.
 
 ## Technologies Used
 
