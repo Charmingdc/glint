@@ -14,11 +14,10 @@ Glint takes a `seed` string, hashes it deterministically, and produces a styled 
 
 ## Apps
 
-| App               | Description            |
-| ----------------- | ---------------------- |
-| `apps/web`        | Landing page           |
-| `apps/docs`       | Documentation          |
-| `apps/playground` | Interactive playground |
+| App         | Description   |
+| ----------- | ------------- |
+| `apps/web`  | Landing page  |
+| `apps/docs` | Documentation |
 
 ---
 
@@ -82,8 +81,7 @@ glint/
 │   └── core/          @glint/core — the publishable library
 ├── apps/
 │   ├── web/           landing page (Vite + React)
-│   ├── docs/          documentation (Vite + React)
-│   └── playground/    interactive playground (Vite + React)
+│   └── docs/          documentation (Vite + React)
 └── package.json       workspace root
 ```
 
@@ -100,9 +98,6 @@ pnpm dev:website
 
 # Start the docs
 pnpm dev:docs
-
-# Start the playground
-pnpm dev:playground
 ```
 
 ## Build
