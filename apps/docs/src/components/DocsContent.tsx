@@ -1,3 +1,6 @@
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
+
 import type { SectionId } from "../App";
 import { Code, InlineCode } from "./Code";
 
@@ -80,7 +83,7 @@ export function DocsContent({
             <p>
               Glint is a zero-dependency, framework-agnostic library that
               generates unique avatars from any seed string. The output is fully
-              deterministic — the same seed always produces the same avatar,
+              deterministic - the same seed always produces the same avatar,
               across environments, runtimes, and deploys.
             </p>
             <p>
@@ -106,9 +109,9 @@ export function DocsContent({
           <div className="flex gap-3 mt-2">
             <button
               onClick={() => onNavigate("installation")}
-              className="rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
             >
-              Get started →
+              Get started <HugeiconsIcon icon={ArrowRight01Icon} />
             </button>
           </div>
         </>
@@ -137,10 +140,25 @@ export function DocsContent({
               esbuild), Deno, and edge runtimes.
             </p>
             <p>
-              TypeScript types are bundled — no <InlineCode>@types</InlineCode>{" "}
+              TypeScript types are bundled - no <InlineCode>@types</InlineCode>{" "}
               package needed.
             </p>
           </Section>
+          <div className="w-full flex  items-center justify-between gap-3 mt-2">
+            <button
+              onClick={() => onNavigate("introduction")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              <HugeiconsIcon icon={ArrowLeft01Icon} /> Introduction
+            </button>
+
+            <button
+              onClick={() => onNavigate("usage")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              Usage <HugeiconsIcon icon={ArrowRight01Icon} />
+            </button>
+          </div>
         </>
       )}
 
@@ -201,6 +219,21 @@ function Avatar({ seed, name }: { seed: string; name?: string }) {
   return <img src={src} width={64} height={64} alt={name ?? seed} />;
 }`}</Code>
           </Section>
+          <div className="w-full flex  items-center justify-between gap-3 mt-2">
+            <button
+              onClick={() => onNavigate("installation")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              <HugeiconsIcon icon={ArrowLeft01Icon} /> Installation
+            </button>
+
+            <button
+              onClick={() => onNavigate("api")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              Api <HugeiconsIcon icon={ArrowRight01Icon} />
+            </button>
+          </div>
         </>
       )}
 
@@ -226,7 +259,7 @@ function Avatar({ seed, name }: { seed: string; name?: string }) {
               name="seed"
               type="string"
               required
-              description="The seed that drives all visual output. The same seed always produces the same avatar. Use any string — user ID, email, username, etc."
+              description="The seed that drives all visual output. The same seed always produces the same avatar. Use any string - user ID, email, username, etc."
             />
             <Param
               name="name"
@@ -265,6 +298,21 @@ function Avatar({ seed, name }: { seed: string; name?: string }) {
               description="Applies a soft feGaussianBlur layer for depth. Works in combination with noise to produce a frosted, layered feel."
             />
           </Section>
+          <div className="w-full flex  items-center justify-between gap-3 mt-2">
+            <button
+              onClick={() => onNavigate("usage")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              <HugeiconsIcon icon={ArrowLeft01Icon} /> Usage
+            </button>
+
+            <button
+              onClick={() => onNavigate("initials")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              Initials <HugeiconsIcon icon={ArrowRight01Icon} />
+            </button>
+          </div>
         </>
       )}
 
@@ -307,7 +355,7 @@ function Avatar({ seed, name }: { seed: string; name?: string }) {
                       "MW",
                       "First char of first + last word",
                     ],
-                    ["X", "X", "Single char — used as-is"],
+                    ["X", "X", "Single char - used as-is"],
                   ].map(([input, output, rule]) => (
                     <tr
                       key={input}
@@ -336,6 +384,21 @@ function Avatar({ seed, name }: { seed: string; name?: string }) {
               proportional at any resolution.
             </p>
           </Section>
+          <div className="w-full flex  items-center justify-between gap-3 mt-2">
+            <button
+              onClick={() => onNavigate("api")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              <HugeiconsIcon icon={ArrowLeft01Icon} /> Api
+            </button>
+
+            <button
+              onClick={() => onNavigate("http-api")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              HTTP API <HugeiconsIcon icon={ArrowRight01Icon} />
+            </button>
+          </div>
         </>
       )}
 
@@ -358,12 +421,9 @@ function Avatar({ seed, name }: { seed: string; name?: string }) {
               run JavaScript.
             </p>
           </Section>
-          <Section title="Base Url">
-            <Code>{`https://gint-dev.vercel.app`}</Code>
-          </Section>
 
           <Section title="Endpoint">
-            <Code>{`GET baseUrl/api/avatar?seed=<seed>[&options]`}</Code>
+            <Code>{`GET https://gint-dev.vercel.app/api/avatar?seed=<seed>[&options]`}</Code>
           </Section>
           <Section title="Parameters">
             <div className="rounded-xl border border-white/[0.07] overflow-hidden">
@@ -423,10 +483,25 @@ GET /api/avatar?seed=jane.doe&name=Jane+Doe&size=256&rounded=true&png=true`}</Co
               <InlineCode>
                 Cache-Control: public, max-age=31536000, immutable
               </InlineCode>{" "}
-              — avatars are safe to cache indefinitely since output is
+              - avatars are safe to cache indefinitely since output is
               deterministic.
             </p>
           </Section>
+          <div className="w-full flex  items-center justify-between gap-3 mt-2">
+            <button
+              onClick={() => onNavigate("initials")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              <HugeiconsIcon icon={ArrowLeft01Icon} /> Initials
+            </button>
+
+            <button
+              onClick={() => onNavigate("typescript")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              Typescript <HugeiconsIcon icon={ArrowRight01Icon} />
+            </button>
+          </div>
         </>
       )}
 
@@ -468,6 +543,14 @@ const svg: string = generateAvatar(options);`}</Code>
   blur?: boolean;
 };`}</Code>
           </Section>
+          <div className="flex gap-3 mt-2">
+            <button
+              onClick={() => onNavigate("http-api")}
+              className="flex items-center gap-1 rounded-3xl bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
+            >
+              <HugeiconsIcon icon={ArrowLeft01Icon} /> HTTP API
+            </button>
+          </div>
         </>
       )}
     </main>
