@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/docs", "destination": "https://glint-docs.vercel.app/docs" },
+    {
+      "source": "/docs/:path",
+      "destination": "https://glint-docs.vercel.app/docs/:path*"
+    }
+  ]
+}
