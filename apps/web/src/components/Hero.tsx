@@ -11,7 +11,7 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="max-w-2xl text-4xl text-center font-semibold tracking-tight md:text-6xl"
+        className="max-w-2xl text-[2.50rem] text-center font-semibold tracking-tight md:text-6xl"
       >
         Deterministic avatar generator
       </motion.h1>
@@ -34,7 +34,7 @@ export function Hero() {
         className="mt-8 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center"
       >
         <a
-          href="/docs"
+          href="https://glint-docs.vercel.app"
           className="inline-flex w-auto items-center justify-center gap-2 rounded-3xl bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-opacity hover:opacity-90 sm:w-auto"
         >
           <HugeiconsIcon
