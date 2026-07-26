@@ -16,7 +16,7 @@ type Config = Required<
 >;
 
 const DEFAULT_CONFIG: Config = {
-  seed: "GLINT",
+  seed: "Glint",
   name: "",
   size: 64,
   rounded: true,

@@ -79,13 +79,14 @@ export function DocsContent({
           <Section title="Overview">
             <p>
               Glint is a zero-dependency, framework-agnostic library that
-              generates unique SVG avatars from any seed string. The output is
-              fully deterministic — the same seed always produces the same
-              avatar, across environments, runtimes, and deploys.
+              generates unique avatars from any seed string. The output is fully
+              deterministic — the same seed always produces the same avatar,
+              across environments, runtimes, and deploys.
             </p>
             <p>
               There is no randomness, no storage, no network requests. Just a
-              seed in, an SVG string out.
+              seed in, an SVG string out and an optional option to return a PNG
+              instead.
             </p>
           </Section>
           <Section title="How it works">

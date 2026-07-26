@@ -1,125 +1,181 @@
 # Glint
 
-Deterministic SVG avatar generator. Give it any seed string and get back a unique, consistent avatar every time — no storage, no external requests, no randomness.
+Deterministic SVG avatar generator. Feed it any string and you'll always get the same unique avatar back, no storage or network calls needed.
 
-## What it does
+## Overview
 
-Glint takes a `seed` string, hashes it deterministically, and produces a styled SVG avatar with a radial gradient background and optional initials overlay. The same seed always produces the same avatar — across environments, runtimes, and deploys.
+Glint takes a seed, hashes it deterministically, and produces a consistent SVG avatar every time. It's perfect for placeholder avatars, user profiles, or any scenario where you need a reliable visual identifier without external dependencies. The same seed will always generate the same gradient, initials, and styling, no matter where you run it.
 
-## Packages
+## System Architecture
 
-| Package                          | Description                                                        |
-| -------------------------------- | ------------------------------------------------------------------ |
-| [`@glint/core`](./packages/core) | Core library — framework-agnostic, works in Node, Vite, and Vercel |
+The project is organized as a pnpm monorepo with a shared core library, two frontend apps, and a serverless function that exposes the avatar generation as an HTTP endpoint.
 
-## Apps
+```mermaid
+flowchart LR
+    WebApp["Web App (React)"]
+    Docs["Documentation"]
+    API["API Endpoint (Vercel Function)"]
+    Core["@glint/core"]
 
-| App         | Description   |
-| ----------- | ------------- |
-| `apps/web`  | Landing page  |
-| `apps/docs` | Documentation |
+    WebApp -- "GET /api/avatar" --> API
+    Docs --> Core
+    API --> Core
 
----
+    style WebApp fill:#1e1b4b,stroke:#6366f1,stroke-width:2px,color:#fff
+    style Docs fill:#1e1b4b,stroke:#6366f1,stroke-width:2px,color:#fff
+    style API fill:#2e1065,stroke:#8b5cf6,stroke-width:2px,color:#fff
+    style Core fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff
+```
 
-## Quick start
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone git@github.com:Charmingdc/glint
+   cd glint
+   ```
+
+2. Install dependencies (requires pnpm):
+
+   ```bash
+   pnpm install
+   ```
+
+## Usage
+
+### Core library
+
+Install `@glint/core` in your project:
 
 ```bash
 npm install @glint/core
 ```
 
+Then generate an avatar programmatically:
+
 ```ts
 import { generateAvatar } from "@glint/core";
 
-const svg = generateAvatar({ seed: "john.doe" });
-
-// Use as an img src
-const src = `data:image/svg+xml;base64,${btoa(svg)}`;
+const svg = generateAvatar({ seed: "alice.wonder" });
+const avatarUrl = `data:image/svg+xml;base64,${btoa(svg)}`;
 ```
 
-## API
+You can customize the output with options like size, rounded shape, noise, and initials.
 
-### `generateAvatar(options)`
+### HTTP endpoint
 
-Returns an SVG string.
+Once deployed (for example, on Vercel), you can request an avatar directly:
 
-| Option    | Type      | Default   | Description                                          |
+```
+GET /api/avatar?seed=charlie&size=200&rounded=true
+```
+
+The endpoint returns an `image/svg+xml` response by default with an optional parameter `png` to get a png version instead, perfect for `<img>` tags or background images.
+
+## Features
+
+### Deterministic avatar generation
+
+The core logic uses a seed string to produce a consistent color palette and layout. Two requests with the same seed will always yield an identical SVG, making caching and identity matching trivial.
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant WebApp as "Web App"
+    participant API as "API Endpoint"
+    participant Core as "@glint/core"
+
+    User->>WebApp: Load profile page
+    WebApp->>API: GET /api/avatar?seed=alice&rounded=true
+    API->>Core: generateAvatar({ seed: "alice", rounded: true })
+    Core-->>API: Return SVG string
+    API-->>WebApp: 200 OK (image/svg+xml)
+    WebApp->>User: Render avatar
+```
+
+### Rich customization
+
+Reshape and style avatars using simple parameters:
+
+- `size` – pixel width and height
+- `rounded` – toggle circular shape
+- `noise` – add a subtle texture layer
+- `blur` – soft depth effect
+- `font` – custom typeface
+- `name` – generate initials overlay
+
+### Serverless-ready HTTP API
+
+A single API route (`/api/avatar`) is included, ready for deployment on platforms like Vercel. No API keys, databases, or environment variables needed.
+
+## Technologies Used
+
+| Category            | Technology                  |
+| ------------------- | --------------------------- |
+| **Core library**    | TypeScript                  |
+| **Frontend apps**   | React, Vite, TypeScript     |
+| **HTTP function**   | Node.js (Vercel serverless) |
+| **Package manager** | pnpm                        |
+| **Tooling**         | tsx, ESLint                 |
+
+## API Documentation
+
+### GET /api/avatar
+
+Generates an SVG avatar based on the provided query parameters. Returns `image/svg+xml`.
+
+**Request** (query params):
+
+| Param     | Type      | Default   | Description                                          |
 | --------- | --------- | --------- | ---------------------------------------------------- |
-| `seed`    | `string`  | required  | Determines the gradient palette and layout           |
-| `name`    | `string`  | —         | Renders up to 2-character initials over the gradient |
-| `size`    | `number`  | `128`     | Width and height of the SVG in pixels                |
+| `seed`    | `string`  | required  | Determines gradient palette and layout               |
+| `name`    | `string`  | —         | Renders up to 2‑character initials over the gradient |
+| `size`    | `number`  | `128`     | Avatar width and height in pixels                    |
 | `rounded` | `boolean` | `false`   | Renders as a circle when `true`                      |
 | `font`    | `string`  | `"Inter"` | Font family for the initials                         |
 | `noise`   | `boolean` | `true`    | Adds a subtle noise texture layer                    |
 | `blur`    | `boolean` | `true`    | Adds a soft blur layer for depth                     |
 
-```ts
-const svg = generateAvatar({
-  seed: "jane.smith",
-  name: "Jane Smith",
-  size: 256,
-  rounded: true,
-  font: "Inter",
-  noise: true,
-  blur: true,
-});
+**Response**:
+
+```xml
+<svg viewBox="0 0 200 200" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="…" … />
+  </defs>
+  <rect x="0" y="0" width="100%" height="100%" rx="100" ry="100" fill="url(#…)" />
+  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="Inter" font-size="80" fill="#fff">JD</text>
+</svg>
 ```
 
-### Initials logic
+**Errors**: The endpoint always returns a valid SVG; missing or invalid parameters fall back to sensible defaults (e.g., a random seed if none is supplied). No explicit error responses are sent.
 
-When `name` is provided, Glint extracts initials from it:
+**Authentication**: None required.
 
-- Single word → first two characters (`"Adebayo"` → `"AD"`)
-- Multiple words → first character of first and last word (`"Jane Smith"` → `"JS"`)
+**Environment variables**: None – all configuration is passed via query parameters.
+
+## Contributing
+
+Contributions are welcome. To get started:
+
+1. Fork the repository and create a branch from `main`
+2. Install dependencies with `pnpm install`
+3. Make your changes and verify they work using `pnpm build` and `pnpm typecheck`
+4. Submit a pull request with a clear description of what you've changed
+
+Please keep the code style consistent and add clear commit messages.
+
+## Author Info
+
+- LinkedIn: [https://linkedin.com/in/adebayo-muis](https://linkedin.com/in/adebayo-muis)
+- X (Twitter): [https://x.com/charmingdc01](https://x.com/charmingdc01)
 
 ---
 
-## Monorepo structure
+[![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![PNPM](https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io/)
 
-```
-glint/
-├── packages/
-│   └── core/          @glint/core — the publishable library
-├── apps/
-│   ├── web/           landing page (Vite + React)
-│   └── docs/          documentation (Vite + React)
-└── package.json       workspace root
-```
-
-## Development
-
-Requires [pnpm](https://pnpm.io).
-
-```bash
-# Install dependencies
-pnpm install
-
-# Start the landing page
-pnpm dev:website
-
-# Start the docs
-pnpm dev:docs
-```
-
-## Build
-
-```bash
-# Build everything (core first, then apps)
-pnpm build
-
-# Build only core
-pnpm --filter @glint/core build
-
-# Type-check the entire workspace
-pnpm typecheck
-
-# Lint all apps
-pnpm lint
-```
-
-> Always run `pnpm --filter @glint/core build` before pushing if you changed anything in `packages/core`. The Vercel serverless function in `apps/web/api` uses the compiled `dist/` output.
-
----
-
-## License
-
-MIT © [Charmingdc](https://github.com/Charmingdc)
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://dokugen.samueltuoyo.com)

@@ -5,15 +5,15 @@ import { fade } from "../lib/motion";
 
 export function Hero() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-8 py-24 text-center">
+    <main className="w-full flex flex-col items-center justify-center pt-38 px-8 text-center">
       <motion.h1
         custom={2}
         initial="hidden"
         animate="show"
         variants={fade}
-        className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl"
+        className="max-w-2xl text-4xl text-center font-semibold tracking-tight md:text-6xl"
       >
-        Deterministic SVG avatar generator
+        Deterministic avatar generator
       </motion.h1>
 
       <motion.p
@@ -21,7 +21,7 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="mt-5 max-w-md text-base text-foreground/50 sm:text-lg"
+        className="mt-5 sm:w-[70%] max-w-md text-base text-foreground/50 sm:text-lg"
       >
         Generate unique, deterministic avatars from any seed.
       </motion.p>
@@ -35,7 +35,7 @@ export function Hero() {
       >
         <a
           href="/docs"
-          className="inline-flex w-full items-center justify-center gap-2 rounded-3xl bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-opacity hover:opacity-90 sm:w-auto"
+          className="inline-flex w-auto items-center justify-center gap-2 rounded-3xl bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-opacity hover:opacity-90 sm:w-auto"
         >
           <HugeiconsIcon
             icon={BookOpen01Icon}
