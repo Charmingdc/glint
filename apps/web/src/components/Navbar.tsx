@@ -29,7 +29,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="flex items-center justify-between px-8.5 py-5 border-b border-white/6">
+    <header className="w-full flex items-center justify-between px-8.5 py-5 border-b border-white/6">
       <motion.div
         custom={0}
         initial="hidden"
@@ -66,9 +66,10 @@ export function Navbar() {
           className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-card px-3 py-2 text-xs font-medium text-foreground/60 transition-colors hover:text-foreground hover:border-white/20"
         >
           <HugeiconsIcon icon={Github01Icon} size={16} color="currentColor" />
-          Open source
+          <span className="hidden md:inline">Open source</span>
+
           {stars !== null && (
-            <>
+            <div className="flex items-center gap-2">
               <span className="w-px h-3 bg-white/10" />
               <HugeiconsIcon
                 icon={StarIcon}
@@ -76,8 +77,9 @@ export function Navbar() {
                 color="currentColor"
                 strokeWidth={1.5}
               />
+
               {formatStars(stars)}
-            </>
+            </div>
           )}
         </motion.a>
       </div>

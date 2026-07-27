@@ -11,7 +11,7 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="max-w-2xl text-4xl text-center font-semibold tracking-tight md:text-6xl"
+        className="max-w-2xl w-[80%] md:w-full text-[2.4rem] text-center font-semibold tracking-tight md:text-6xl"
       >
         Deterministic avatar generator
       </motion.h1>
@@ -21,7 +21,7 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="mt-6 sm:w-[70%] max-w-md text-base text-foreground/50 sm:text-lg"
+        className="mt-6 w-[80%] md:w-full max-w-md text-base text-foreground/50 sm:text-lg"
       >
         Generate unique, deterministic avatars from any seed.
       </motion.p>
