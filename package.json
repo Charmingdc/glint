@@ -1,10 +1,11 @@
 {
   "name": "glint",
   "private": true,
+  "packageManager": "pnpm@11.5.2",
   "scripts": {
     "dev:website": "pnpm --filter web dev",
     "dev:docs": "pnpm --filter docs dev",
-    "build": "pnpm --filter @glint/core build && pnpm --filter '!@glint/core' -r build",
+    "build": "pnpm --filter @glintjs/core build && pnpm --filter '!@glintjs/core' -r build",
     "typecheck": "pnpm -r exec tsc --noEmit",
     "lint": "pnpm -r lint"
   },

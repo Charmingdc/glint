@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { generateAvatar } from "@glint/core";
+import { generateAvatar } from "@glintjs/core";
 import sharp from "sharp";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {

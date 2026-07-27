@@ -1,10 +1,9 @@
 {
-  "name": "@glint/core",
+  "name": "@glintjs/core",
   "version": "1.0.0",
+  "description": "Deterministic gradient avatar generator.",
+  "license": "MIT",
   "type": "module",
-  "files": [
-    "dist"
-  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,6 +13,27 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charmingdc/glint.git"
+  },
+  "homepage": "https://glintjs.dev",
+  "bugs": {
+    "url": "https://github.com/charmingdc/glint/issues"
+  },
+  "keywords": [
+    "avatar",
+    "gradient",
+    "svg",
+    "typescript",
+    "generator"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsup",

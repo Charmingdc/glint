@@ -17,7 +17,7 @@ importers:
 
   apps/docs:
     dependencies:
-      '@glint/core':
+      '@glintjs/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@hugeicons/core-free-icons':
@@ -81,7 +81,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@glint/core':
+      '@glintjs/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@hugeicons/core-free-icons':

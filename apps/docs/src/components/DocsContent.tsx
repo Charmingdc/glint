@@ -129,9 +129,9 @@ export function DocsContent({
           </div>
           <Section title="Package manager">
             <p>Install the core package from npm:</p>
-            <Code>{`npm install @glint/core`}</Code>
-            <Code>{`pnpm add @glint/core`}</Code>
-            <Code>{`yarn add @glint/core`}</Code>
+            <Code>{`npm install @glintjs/core`}</Code>
+            <Code>{`pnpm add @glintjs/core`}</Code>
+            <Code>{`yarn add @glintjs/core`}</Code>
           </Section>
           <Section title="Requirements">
             <p>
@@ -177,7 +177,7 @@ export function DocsContent({
               Import <InlineCode>generateAvatar</InlineCode> and pass a seed
               string. You get back an SVG string you can use anywhere.
             </p>
-            <Code>{`import { generateAvatar } from "@glint/core";
+            <Code>{`import { generateAvatar } from "@glintjs/core";
 
 const svg = generateAvatar({ seed: "jane.doe" });
 
@@ -207,7 +207,7 @@ const src = \`data:image/svg+xml;base64,\${btoa(svg)}\`;
 });`}</Code>
           </Section>
           <Section title="React example">
-            <Code>{`import { generateAvatar } from "@glint/core";
+            <Code>{`import { generateAvatar } from "@glintjs/core";
 import { useMemo } from "react";
 
 function Avatar({ seed, name }: { seed: string; name?: string }) {
@@ -520,8 +520,8 @@ GET /api/avatar?seed=jane.doe&name=Jane+Doe&size=256&rounded=true&png=true`}</Co
               Glint is written in TypeScript and ships types in the package. No{" "}
               <InlineCode>@types</InlineCode> package is needed.
             </p>
-            <Code>{`import { generateAvatar } from "@glint/core";
-import type { AvatarOptions } from "@glint/core";
+            <Code>{`import { generateAvatar } from "@glintjs/core";
+import type { AvatarOptions } from "@glintjs/core";
 
 const options: AvatarOptions = {
   seed: "jane.doe",

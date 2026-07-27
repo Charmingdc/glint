@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@glint/core": "workspace:*",
+    "@glintjs/core": "workspace:*",
     "@hugeicons/core-free-icons": "^4.2.2",
     "@hugeicons/react": "^1.1.9",
     "@tailwindcss/vite": "^4.3.2",
