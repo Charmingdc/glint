@@ -11,7 +11,7 @@ export function Hero() {
         initial="hidden"
         animate="show"
         variants={fade}
-        className="max-w-2xl text-[2.50rem] text-center font-semibold tracking-tight md:text-6xl"
+        className="max-w-2xl text-4xl text-center font-semibold tracking-tight md:text-6xl"
       >
         Deterministic avatar generator
       </motion.h1>
