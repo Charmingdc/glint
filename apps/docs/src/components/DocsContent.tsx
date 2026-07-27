@@ -128,7 +128,18 @@ export function DocsContent({
             </h1>
           </div>
           <Section title="Package manager">
-            <p>Install the core package from npm:</p>
+            <p>
+              Install the core package from{" "}
+              <a
+                href="https://www.npmjs.com/package/@glintjs/core"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                <strong>npm</strong>
+              </a>
+              :
+            </p>
             <Code>{`npm install @glintjs/core`}</Code>
             <Code>{`pnpm add @glintjs/core`}</Code>
             <Code>{`yarn add @glintjs/core`}</Code>

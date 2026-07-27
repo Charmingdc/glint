@@ -11,7 +11,7 @@ export function Footer() {
         variants={fade}
         className="text-center text-xs text- foreground/30"
       >
-        glint — open source, MIT license
+        glint - open source, MIT license
       </motion.p>
     </footer>
   );
