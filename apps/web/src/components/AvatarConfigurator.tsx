@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { generateAvatar } from "@glint/core";
+import { generateAvatar } from "@glintjs/core";
 import type { AvatarOptions } from "@glintjs/core";
 import { ease } from "../lib/motion";
 import { Field } from "./Field";
