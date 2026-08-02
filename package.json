@@ -5,7 +5,8 @@
   "scripts": {
     "dev:website": "pnpm --filter web dev",
     "dev:docs": "pnpm --filter docs dev",
-    "build": "pnpm --filter @glintjs/core build && pnpm --filter '!@glintjs/core' -r build",
+    "build:core": "pnpm --filter @glintjs/core build && pnpm --filter '!@glintjs/core' -r build",
+    "build:react": "pnpm --filter @glintjs/react build && pnpm --filter '!@glintjs/react' -r build",
     "typecheck": "pnpm -r exec tsc --noEmit",
     "lint": "pnpm -r lint"
   },

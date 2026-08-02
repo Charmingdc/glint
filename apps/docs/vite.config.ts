@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "@glint/core": resolve(__dirname, "../../packages/core/src/index.ts"),
+      "@glintjs/core": resolve(__dirname, "../../packages/core/src/index.ts"),
     },
   },
 });

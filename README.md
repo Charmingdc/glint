@@ -15,7 +15,7 @@ flowchart LR
     WebApp["Web App (React)"]
     Docs["Documentation"]
     API["API Endpoint (Vercel Function)"]
-    Core["@glint/core"]
+    Core["@glintjs/core"]
 
     WebApp -- "GET /api/avatar" --> API
     Docs --> Core
@@ -46,16 +46,16 @@ flowchart LR
 
 ### Core library
 
-Install `@glint/core` in your project:
+Install `@glintjs/core` in your project:
 
 ```bash
-npm install @glint/core
+npm install @glintjs/core
 ```
 
 Then generate an avatar programmatically:
 
 ```ts
-import { generateAvatar } from "@glint/core";
+import { generateAvatar } from "@glintjs/core";
 
 const svg = generateAvatar({ seed: "alice.wonder" });
 const avatarUrl = `data:image/svg+xml;base64,${btoa(svg)}`;
@@ -84,7 +84,7 @@ sequenceDiagram
     actor User
     participant WebApp as "Web App"
     participant API as "API Endpoint"
-    participant Core as "@glint/core"
+    participant Core as "@glintjs/core"
 
     User->>WebApp: Load profile page
     WebApp->>API: GET /api/avatar?seed=alice&rounded=true

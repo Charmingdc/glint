@@ -12,7 +12,7 @@ Glint gives you an avatar from any string you throw at it. You can call the host
 flowchart LR
     Browser["Web Browser (React app)"]
     VercelAPI["Vercel Serverless Function"]
-    Core["@glint/core Library"]
+    Core["@glintjs/core Library"]
     Sharp["Sharp (PNG conversion)"]
 
     Browser -- "generates client‑side" --> Core
@@ -27,7 +27,7 @@ flowchart LR
     style Sharp fill:#4a044e,stroke:#c026d3,stroke-width:2px,color:#fff
 ```
 
-The frontend can generate avatars directly using the `@glint/core` library, or it can delegate to the API. The serverless function also uses `@glint/core` and optionally converts the SVG to PNG with Sharp, then caches aggressively for maximum speed.
+The frontend can generate avatars directly using the `@glintjs/core` library, or it can delegate to the API. The serverless function also uses `@glintjs/core` and optionally converts the SVG to PNG with Sharp, then caches aggressively for maximum speed.
 
 ## Installation
 
@@ -72,7 +72,7 @@ The API responds with the image and sets long-lived cache headers, so it's safe 
 If you'd rather generate avatars on your own server or client, import the function:
 
 ```ts
-import { generateAvatar } from '@glint/core';
+import { generateAvatar } from '@glintjs/core';
 
 const svg = generateAvatar({
   seed: 'user-123',
@@ -94,7 +94,7 @@ The same seed always produces the exact same avatar. Perfect for user profiles, 
 sequenceDiagram
     actor C as Client
     participant F as Vercel Function
-    participant G as @glint/core
+    participant G as @glintjs/core
     participant S as Sharp
 
     C->>F: GET /api/avatar?seed=alice&png=true
@@ -113,7 +113,7 @@ Tweak the seed, size, rounded corners, noise, blur, and font right from the brow
 sequenceDiagram
     actor U as User
     participant UI as React Configurator
-    participant Core as @glint/core (client‑side)
+    participant Core as @glintjs/core (client‑side)
 
     U->>UI: Change seed or option
     UI->>Core: generateAvatar(newConfig)
@@ -138,7 +138,7 @@ Adjust the font family, toggle noise and blur effects, and switch between rounde
 | [Motion](https://motion.dev/) | Animations (formerly Framer Motion) |
 | [Hugeicons](https://hugeicons.com/) | Icon family |
 | [Sharp](https://sharp.pixelplumbing.com/) | High-performance SVG-to-PNG conversion |
-| [@glint/core](https://github.com/Charmingdc/glint) | Deterministic avatar generation logic |
+| [@glintjs/core](https://github.com/Charmingdc/glint) | Deterministic avatar generation logic |
 | [Vercel Serverless Functions](https://vercel.com/docs/functions) | API endpoint hosting |
 
 ## API Documentation

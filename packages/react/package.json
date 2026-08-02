@@ -1,0 +1,61 @@
+{
+  "name": "@glintjs/react",
+  "version": "1.0.0",
+  "description": "Deterministic gradient avatar generator for React.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charmingdc/glint.git"
+  },
+  "homepage": "https://glint-dev.vercel.app",
+  "bugs": {
+    "url": "https://github.com/charmingdc/glint/issues"
+  },
+  "keywords": [
+    "avatar",
+    "gradient",
+    "svg",
+    "generator",
+    "typescript",
+    "react",
+    "react-avatar",
+    "avatar-generator"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "@glintjs/core": "^1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tsup": "^8.0.0"
+  }
+}
