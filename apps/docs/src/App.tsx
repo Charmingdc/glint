@@ -27,7 +27,7 @@ export type SectionId =
 
 export default function App() {
   const [active, setActive] = useState<SectionId>("introduction");
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   function navigate(id: SectionId) {
     setActive(id);
