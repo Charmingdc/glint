@@ -89,8 +89,8 @@ export function AvatarConfigurator() {
         <img
           src={avatarSrc}
           alt=""
-          width={28}
-          height={28}
+          width={25}
+          height={25}
           style={{ display: "block" }}
         />
       </button>

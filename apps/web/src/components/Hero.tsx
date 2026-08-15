@@ -5,47 +5,44 @@ import { fade } from "../lib/motion";
 
 export function Hero() {
   return (
-    <main className="w-full flex flex-col items-center justify-center pt-38 px-8 text-center">
+    <main className="w-full max-w-3xl flex flex-col items-start p-8">
       <motion.h1
+        custom={1}
+        initial="hidden"
+        animate="show"
+        variants={fade}
+        className="w-full max-w-md text-xl font-semibold text-foreground/80 mt-2"
+      >
+        Generate unique, deterministic avatars from any seed string.
+      </motion.h1>
+
+      <motion.p
         custom={2}
         initial="hidden"
         animate="show"
         variants={fade}
-        className="max-w-2xl w-[80%] md:w-full text-[2.4rem] text-center font-semibold tracking-tight md:text-6xl"
+        className="w-full max-w-md text-base font-light text-foreground/60 mt-5"
       >
-        Deterministic avatar generator
-      </motion.h1>
+        Glint is a developer-first toolkit for creating unique, deterministic
+        gradient avatars through packages and an HTTP API.
+      </motion.p>
 
-      <motion.p
+      <motion.a
+        href="https://glint-docs.vercel.app"
         custom={3}
         initial="hidden"
         animate="show"
         variants={fade}
-        className="mt-6 w-[80%] md:w-full max-w-md text-base text-foreground/50 sm:text-lg"
+        className="inline-flex w-auto items-center justify-center gap-2 rounded-xl bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-opacity hover:opacity-90 sm:w-auto mt-6"
       >
-        Generate unique, deterministic avatars from any seed.
-      </motion.p>
-
-      <motion.div
-        custom={4}
-        initial="hidden"
-        animate="show"
-        variants={fade}
-        className="mt-8 flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center"
-      >
-        <a
-          href="https://glint-docs.vercel.app"
-          className="inline-flex w-auto items-center justify-center gap-2 rounded-3xl bg-foreground px-5 py-3.5 text-sm font-medium text-background transition-opacity hover:opacity-90 sm:w-auto"
-        >
-          <HugeiconsIcon
-            icon={BookOpen01Icon}
-            size={16}
-            color="currentColor"
-            strokeWidth={1.5}
-          />
-          View Docs
-        </a>
-      </motion.div>
+        <HugeiconsIcon
+          icon={BookOpen01Icon}
+          size={16}
+          color="currentColor"
+          strokeWidth={1.5}
+        />
+        View Docs
+      </motion.a>
     </main>
   );
 }
