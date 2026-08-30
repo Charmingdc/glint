@@ -1,37 +1,20 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { generateAvatar } from "@glintjs/core";
-import type { AvatarOptions } from "@glintjs/core";
 import { ease } from "../lib/motion";
+import { useAvatarConfig } from "../lib/avatar-config";
 import { Field } from "./Field";
 import { Toggle } from "./Toggle";
 
 const FONTS = ["Inter", "Georgia", "monospace", "cursive"];
-
-type Config = Required<
-  Pick<
-    AvatarOptions,
-    "seed" | "name" | "size" | "rounded" | "font" | "noise" | "blur"
-  >
->;
-
-const DEFAULT_CONFIG: Config = {
-  seed: "Glint",
-  name: "",
-  size: 64,
-  rounded: true,
-  font: "Inter",
-  noise: true,
-  blur: true,
-};
 
 function svgToDataUri(svg: string): string {
   return `data:image/svg+xml;base64,${btoa(svg)}`;
 }
 
 export function AvatarConfigurator() {
+  const { config, set } = useAvatarConfig();
   const [open, setOpen] = useState(false);
-  const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
   const menuRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
 
@@ -68,10 +51,6 @@ export function AvatarConfigurator() {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
-
-  function set<K extends keyof Config>(key: K, value: Config[K]) {
-    setConfig((prev) => ({ ...prev, [key]: value }));
-  }
 
   const PREVIEW_SIZE = Math.min(Math.max(config.size, 40), 96);
   const borderRadius = config.rounded ? "50%" : "8px";
@@ -149,7 +128,7 @@ export function AvatarConfigurator() {
                 />
               </Field>
 
-              <Field label={`Size — ${config.size}px`}>
+              <Field label={`Size · ${config.size}px`}>
                 <input
                   type="range"
                   min={32}

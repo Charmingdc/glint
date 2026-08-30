@@ -29,7 +29,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="w-full max-w-3xl flex items-center justify-between px-8.5 py-6">
+    <header className="w-full flex items-center justify-between px-8 py-6">
       <motion.div
         custom={0}
         initial="hidden"
